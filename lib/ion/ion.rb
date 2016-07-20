@@ -42,6 +42,16 @@ module Ion
         label.text = icons[icon_name.to_sym]
         return label
     end
+    
+    def imageByFont(icon_name, opts={})
+        opts[:color] ||= :black.uicolor
+        opts[:color] = color_from_string(opts[:color]) if opts[:color].is_a? String
+        puts "Here are our opts: #{opts}"
+        # return IonIcons.imageWithIcon(icon_name.to_sym, size: opts[:size], color: opts[:color])
+        icon_label = Ion.label(icon_name, color: opts[:color], size: opts[:size])
+        puts "label is #{icon_label}"
+        return icon_label.uiimage
+    end
 
     # # Returns a UIImage with the requested icon.
     # #
